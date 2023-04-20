@@ -40,6 +40,7 @@ def upload(request):
         image_np=np.array(img.convert('RGB'))
         myName="capturing"
         mySec="User"
+        stat="e"
         face_locations = face_recognition.face_locations(image_np)
         if(face_locations!=[]):
             encoding=face_recognition.face_encodings(image_np,face_locations)[0]
@@ -72,6 +73,7 @@ def upload(request):
                             #           exit_location="-",fare=0)
                             # j.save()
                         else:
+                            stat="x"
                             jo=passenger_user[best_match_index].passenger.last_visited_station+'to'+cam_name
                             passenger_user[best_match_index].passenger.balance-=cost[jo]
                             passenger_user[best_match_index].passenger.status="NOT Travelling"
@@ -84,7 +86,7 @@ def upload(request):
             face_distances = face_recognition.face_distance(encodings, encoding)
             face_match_percentage = (1-face_distances[0])*100
             print (np.round(face_match_percentage,4))
-        r={'name':myName , 'sec':mySec} 
+        r={'name':myName , 'sec':mySec,'stat':stat}
         print(r)
         return JsonResponse(r)
     return render(request,'adminCamera.html') 

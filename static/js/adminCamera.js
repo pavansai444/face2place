@@ -10,8 +10,10 @@ navigator.mediaDevices.getUserMedia({ video: true })
     video.srcObject = stream;
   });
   const rd=document.getElementById("response");
-  const user1='<h2 class=\"card-title\"> Proceed ';
-  const user2='</h2><p>Enjoy the ride and cherish the memories</p>';
+  const user1x='<h2 class=\"card-title\"> Thank You ';
+  const user1e='<h2 class=\"card-title\"> Proceed ';
+  const user2x='</h2><h2 class=\"card-title\">Visit Again</h2>';
+  const user2e='</h2><h5>Enjoy the ride and cherish the memories</h5>';
   const spinning='<h1>Capturing...</h1><div class=\"spinner-border\" role=\"status\"><span class=\"sr-only\">Loading...</span></div> ';
   const unknown='<h2 class=\"card-title\">Unknown User</h2> <p> Please Register At your nearest Registration Desk.</p>';
   const nobal1='<h2 class=\"card-title\"> ';
@@ -57,7 +59,11 @@ function upload(){
           rd.classList.remove("bg-danger");          
           rd.classList.remove("bg-warning");
           rd.classList.add("bg-success");
-          rd.innerHTML=user1+result.name+user2;
+          if(result.stat=='e'){  
+            rd.innerHTML=user1e+result.name+user2e;
+          }else{
+            rd.innerHTML=user1x+result.name+user2x;
+          }
         }
       })
   })
