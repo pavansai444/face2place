@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Login">
+    <title>Face2Place</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico'%}"></head>
+    <!-- css -->
+    <link rel="stylesheet" href="{% static 'css/login.css'%}">
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    <!-- icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="login">
+        <div class="login__content">
+            <div class="login__img">
+                <img src="{% static 'assets/R/Train.gif' %}" id="login-background1" alt="">
+            </div>
+
+            <div class="login__forms">
+                <form name="login" method="POST" class="login__registre" id="login-in">
+                    {% csrf_token %}
+                    <h1 class="login__title">Sign In</h1>
+
+                    <div class="login__box">
+                        <i class='bx bx-user login__icon'></i>
+                        <input type="text" placeholder="Username" class="login__input" name="uname" required>
+                    </div>
+
+                    <div class="login__box">
+                        <i class='bx bx-lock-alt login__icon'></i>
+                        <input type="password" placeholder="Password" class="login__input" name="pwd" required>
+                    </div>
+
+                    <a href="#" class="login__forgot">Forgot password?</a>
+                    
+                    <input type="submit" name="login" value="Sign In" class="login__button">
+                    
+                    <div>
+                        <span class="login__account">Don't have an Account ?</span>
+                        <span class="login__signin" id="sign-up">Register</span>
+                    </div>
+                </form>
+
+                <div  class="login__create none" id="login-up">
+                    <h1 class="login__title">Steps to Create Account</h1>
+                    <div class="login__box">
+                        <p class="instructions"><i class="fa-lg fa-solid fa-location-dot"></i>  Visit your nearest Face 2 Place enabled metro station.</p>
+                    </div>
+                    
+                    <div class="login__box">
+                        <p class="instructions"><i class="fa fa-lg fa-light fa-face-smile"></i>   Reach out to the registratrion desk and get your Face Registered.</p>
+                    </div>               
+
+                    <div>
+                        <span class="login__account" >Already have an Account ?</span>
+                        <span class="login__signup" id="sign-in">Sign In</span>
+                    </div>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'js/login.js'%}"></script>
+</body>
+</html>

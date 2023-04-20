@@ -1,0 +1,156 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Face2Place</title>
+	<!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/adminCamera1.css'%}">
+    <!-- favicon -->
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.png'%}"></head>
+
+</head>
+<body>
+	<!-- Navigation Bar -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand brand" href="#">Face2Place</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item ">
+                        <a class="nav-link " href="/register/">Register</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link active" href="adminCamera.html">Camera</a>
+                    </li>
+                </ul>
+                <div class="ml-auto theme-icon" onclick="toggleUserTheme();">
+                    <i class="fa fa-adjust" id="dark-button"></i>
+                </div>
+                <div class="ml-auto theme-logout">
+                    <a href="/login/" class="sign-out-button">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+	<!-- Page content -->
+    
+    <div class="container" id="cameraCapture">		
+        <form id="my-form" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}      
+        </form>
+    </div>
+    <main >
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card text-white shadow mb-3" >
+                        <div class="card-body " >                            
+                            <video id="video" width="100%" height="100%" autoplay></video>
+                            <canvas  id="canvas" width="640" height="480" ></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card shadow mb-3">
+                        <div class="card-body ">
+                            <h1 class="card-title">Welcome</h1>
+                            <p>The current time is: <em><time id="current-time"></time></em></p>      
+                            <div class="card bg-secondary text-white align-items-center bg-gradient" id="response">                                
+                                    <h1>Capturing...</h1>
+                                    <div class="spinner-border" role="status">
+                                      <span class="sr-only">Loading...</span>
+                                    </div>         
+                            </div>                  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </main>
+    <!-- Footer -->
+    <footer class="bg-dark text-white pt-5 pb-4 mt-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <h5 class="mb-4">Support</h5>
+              <ul class="list-unstyled">
+                <li><a href="#" class="nav-link">Visit Us</a></li>
+                <li><a href="#" class="nav-link">Social </a></li>
+                <li><a href="#" class="nav-link">Help Center</a></li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <h5 class="mb-4">FAQ</h5>
+              <ul class="list-unstyled">
+                <li><a href="#" class="nav-link">create an account?</a></li>
+                <li><a href="#" class="nav-link">reset my password?</a></li>
+                <li><a href="#" class="nav-link">payment methods?</a></li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <h5 class="mb-4">Contact</h5>
+              <ul class="list-unstyled">
+                <li><a href="#" class="nav-link">Email Us</a></li>
+                <li><a href="#" class="nav-link">Call Us</a></li>
+                <li><a href="#" class="nav-link">Visit Us</a></li>
+              </ul>
+            </div>
+            
+          </div>
+        </div>
+      </footer>
+      
+
+	<!-- Bootstrap JS -->
+      <script>
+        function toggleUserTheme() {
+        var element = document.body;
+        element.classList.toggle("dark-mode");
+        var thbtn= document.querySelector("#dark-button");
+        thbtn.classList.toggle("fa-light");
+        thbtn.classList.toggle("fa-moon");
+        thbtn.classList.toggle("fa-adjust");
+        }
+        function updateTime() {
+        var now = new Date();
+        var timeElement = document.getElementById('current-time');
+        timeElement.textContent = now.toLocaleTimeString();
+        }
+        setInterval(updateTime, 1000);
+        // const rd=document.getElementById("response");
+        // const spinning='<h1>Capturing...</h1><div class=\"spinner-border\" role=\"status\"><span class=\"sr-only\">Loading...</span></div> ';
+        // const user1='<h2 class=\"card-title\"> Proceed ';
+        //   const user2='</h2><p>Enjoy the ride and cherish the memories</p>'
+        // const unknown='<h2 class=\"card-title\"> ';
+        // rd.addEventListener("click",function(){
+        //     rd.classList.toggle("bg-secondary");
+        //     rd.classList.toggle("bg-success");
+        //     if(rd.classList.contains("bg-success")){
+        //     rd.innerHTML="<h2>Welcome Karthik </h2>";
+        //     }else{
+        //         rd.innerHTML=newContent;
+        //     }
+        // })
+        
+      </script>
+    <script src="{% static 'js/adminCamera.js'%}"></script>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@2.9.3/dist/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+/* Add a color change icon */
+.theme-icon {
+    font-size: 20px;
+    cursor: pointer;
+    color: white;
+    margin-left: auto;
+    margin-right: 2%;
+}
+.theme-logout{
+    margin-right: 3.5%;
+}
+.sign-out-button{
+    color: white;
+}
+.brand{
+    margin-left: 2%;
+}
+/* Dark mode */
+.dark-mode {
+  background-color: black;
+  color: white;
+}
+header{
+    margin-bottom: 5vh;
+}
+
+@media screen and (min-width:720px ){
+    #registration{
+        margin-left: 9%;
+        padding-right: 9%;
+    }
+}

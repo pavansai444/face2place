@@ -1,0 +1,207 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face2Place</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="{%static 'css/swiper-bundle.min.css' %}">
+    
+    <link rel="stylesheet" href="{%static 'css/styltable1.css' %}">
+    <!-- IOCNS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- favicon -->
+    <link rel="icon" type="image/x-icon" href="{%static 'assets/favicon.png' %}"></head>
+
+    
+    
+  </head>
+  <body >
+    <section>
+    <header class="header scroll-header" id="header">
+      <nav class="nav container">
+        <a href="/home/" class="nav__logo">Face 2 place</a>
+    
+        <div class="nav__menu" id="nav-menu">
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a href="/home/" class="nav__link">Home</a>
+            </li>
+            <li class="nav__item">
+                <a href="/home/" class="nav__link ">Discover</a>
+            </li>
+            <li class="nav__item">
+                <a href="/account/" class="nav__link">My Account</a>
+            </li>
+            <li class="nav__item">
+                <a href="/recharge/" class="nav__link">Recharge</a>
+            </li>
+            <li class="nav__item">
+                <a href="/history/" class="nav__link active-link">History</a>
+            </li>
+                  <li class="nav__item">
+                      <!-- Karthik -->
+                      <a href="/login/"  class="nav__link"><i class="fa-solid fa-arrow-right-from-bracket"></i> <span class="log-out">Sign Out</span></a>
+                  </li>
+              </ul>
+              
+              <div class="nav__dark">
+                  <!-- Theme change button -->
+                  <span class="change-theme-name">Dark mode</span>
+                  <i class="ri-moon-line change-theme" id="theme-button"></i>
+              </div>
+
+              <i class="ri-close-line nav__close" id="nav-close"></i>
+          </div>
+
+          <div class="nav__toggle" id="nav-toggle">
+              <i class="ri-function-line"></i>
+          </div>
+      </nav>
+  </header>
+</section>
+  <main class="main">
+      <!--==================== HOME ====================-->
+ 
+          
+          <section class="section ">
+            <div class="list-container video__description">
+                <ul class="list">
+                    {% if not history %}
+                    <h2 class="list-item-title ">No. of Journeys: {{length}} </h2>
+                    <li class="list-item">
+                        <div class="list-item-image"><img src="{%static 'assets/R/Train.gif' %}" alt="Web Development"></div>
+                        <div class="list-item-content">
+                          <h2 class="list-item-title">No journeys Yet </h2>
+                
+                        </div>
+                      </li>
+                    
+                    {%else%}
+                    <h2 class = "list-item-title">No. of Journeys: {{length}} </h2>
+                     
+                    {%endif%}
+                {% for x in history reversed %}
+                
+                   <li class="list-item">
+                    <div class="list-item-image"><img src="{%static 'assets/R/Train.gif' %}" alt="Web Development"></div>
+                    <div class="list-item-content">
+                      <h2 class="list-item-title">{{x.entry_location}}<b>-<b>{{x.exit_location}}</h2>
+                      <p class="list-item-description">{{x.entry_time}}<b>--<b>{{x.exit_time}}</p>
+                      <p class="list-item-description">Fare :{{x.fare}} </p>
+                    </div>
+                  </li>
+                {% endfor %}
+                <h2 class = "list-item-title">balance: {{balance}} </h2>
+
+                </ul>
+              </div>
+              
+          </section>
+         
+
+          <!--==================== VIDEO ====================-->
+          <section class="video section" id="map" style="display: none;"  >
+              <h2 class="section__title">Current Map</h2>
+
+              <div class="video__container container" >
+                  <p class="video__description">Everyone in the city is part of our community when we bond them through our service.
+                  </p>
+
+                  <div class="video__content">
+                      <img src="assets/iitrmap.png" id="video-file" alt="">
+                      <button class="button button--flex video__button" id="video-button">
+                          <i class="ri-play-line video__button-icon" id="video-icon"></i>
+                      </button>
+                  </div>
+              </div>
+          </section>            
+  </main>
+  <!--==================== FOOTER ====================-->
+  <footer class="footer section">
+      <div class="footer__container container grid">
+          <div class="footer__content grid">
+              <div class="footer__data">
+                  <h3 class="footer__title">Goal</h3>
+                  <p class="footer__description">We go the extra mile   <br>to ensure your travel experience is wonderful<br>   and nothing short of amazing.
+                  </p>
+                  
+              </div>
+
+              <div class="footer__data">
+                  <h3 class="footer__subtitle">Team</h3>
+                  <ul>
+                      <li class="footer__item">
+                          <a href="" class="footer__link">Pavan Sai</a>
+                      </li>
+                      <li class="footer__item">
+                          <a href="" class="footer__link">Vishwanath</a>
+                      </li>
+                      <li class="footer__item">
+                          <a href="" class="footer__link">Harshavardhan</a>
+                      </li>
+                  </ul>
+              </div>
+
+              <div class="footer__data">
+                  <h3 class="footer__subtitle">Team</h3>
+                  <ul>
+                      <li class="footer__item">
+                          <a href="" class="footer__link">Karthik</a>
+                      </li>
+                      <li class="footer__item">
+                          <a href="" class="footer__link">Manikanta</a>
+                      </li>
+                      <li class="footer__item">
+                          <a href="" class="footer__link">Mohith</a>
+                      </li>
+                  </ul>
+              </div>
+
+              <div class="footer__data">
+                  <h3 class="footer__subtitle">Support</h3>
+                  <ul>
+                      <li class="footer__item">
+                          <a href="" class="footer__link">FAQs</a>
+                      </li>
+                      <li class="footer__item">
+                          <a href="" class="footer__link">Support Center</a>
+                      </li>
+                      <li class="footer__item">
+                          <a href="" class="footer__link">Contact Us</a>
+                      </li>
+                  </ul>
+                  <div>
+                      <a href="https://www.facebook.com/" target="_blank" class="footer__social">
+                          <i class="ri-facebook-box-fill"></i>
+                      </a>
+                      <a href="https://twitter.com/" target="_blank" class="footer__social">
+                          <i class="ri-twitter-fill"></i>
+                      </a>
+                      <a href="https://www.instagram.com/venkata_mani_kanta/" target="_blank" class="footer__social">
+                          <i class="ri-instagram-fill"></i>
+                      </a>
+                      <a href="https://www.youtube.com/@vishwanathchalla1563" target="_blank" class="footer__social">
+                          <i class="ri-youtube-fill"></i>
+                      </a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </footer> 
+  
+  <a href="#" class="scrollup" id="scroll-up">
+      <i class="ri-arrow-up-line scrollup__icon"></i>
+  </a>
+  <!-- JS -->
+  <script src="{%static 'js/scrollreveal.min.js' %}"></script>
+  <script src="{%static 'js/swiper-bundle.min.js' %}"></script>
+  <script src="{%static 'js/myAccount.js' %}"></script>
+
+
+    
+  </body>
+</html>
