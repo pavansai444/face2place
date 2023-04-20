@@ -11,3 +11,16 @@
 ### Prerequisites
 
 Make sure you have installed *visual studio*,*Django*, *python*,*jupyter Notebook*, *pip package installer*  before running the project.
+
+### Installation of required packages
+
+* Clone the repo sh git clone {repository link}
+   
+* Open the migrations in home folder of the project and delete all the migration files which are numbered.
+```
+pip install -r requirements.txt
+```
+## How to run
+Start the server by navigating to the main folder which contains manage.py and execute this command:
+![WhatsApp Image 2023-04-20 at 22 06 58](https://user-images.githubusercontent.com/101196873/233431787-f8c92d44-b275-4ec6-8129-f4cadcdf9fbb.jpg)
+
