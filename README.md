@@ -35,3 +35,5 @@ in the browser window,type 127.0.0.1:8000/login/ in the address bar
 ![WhatsApp Image 2023-04-20 at 22 34 43](https://user-images.githubusercontent.com/101196873/233439146-94091009-9092-4108-aa38-8a292d06f552.jpg)
 ## Recent journey details of commuter
 ![WhatsApp Image 2023-04-20 at 22 38 33](https://user-images.githubusercontent.com/101196873/233439566-97fc2de8-223e-4324-b7c3-943df9248068.jpg)
+## home page of our website
+![WhatsApp Image 2023-04-20 at 22 44 42](https://user-images.githubusercontent.com/101196873/233440212-fbdd240b-8f19-4e99-9533-fa0270a72d49.jpg)
