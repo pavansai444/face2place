@@ -1,6 +1,6 @@
 # Face2place
 <img width="100" alt="image" src="https://user-images.githubusercontent.com/101196873/233442917-77fb2042-8c78-4819-b4d3-504fc12a08e4.png">  
- A Face recognition based metro ticketing system that makes user's journey and hassle-free.  
+ A Face recognition based metro ticketing system that makes user's journey and hassle-free.
  
 ![image](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![image](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
